@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometricModeling.NET", "GeometricModeling.NET\GeometricModeling.NET.csproj", "{F478D816-AA38-4B27-B699-4CC374D54DCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometricModeling.NET.Client", "GeometricModeling.NET.Client\GeometricModeling.NET.Client.csproj", "{A3FCD69A-856C-4D5B-8E92-AC7CB9127A97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F478D816-AA38-4B27-B699-4CC374D54DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F478D816-AA38-4B27-B699-4CC374D54DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F478D816-AA38-4B27-B699-4CC374D54DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F478D816-AA38-4B27-B699-4CC374D54DCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3FCD69A-856C-4D5B-8E92-AC7CB9127A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3FCD69A-856C-4D5B-8E92-AC7CB9127A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3FCD69A-856C-4D5B-8E92-AC7CB9127A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3FCD69A-856C-4D5B-8E92-AC7CB9127A97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EC92FFC-ADE4-40AE-8A2D-924CFC317031}
+	EndGlobalSection
+EndGlobal
