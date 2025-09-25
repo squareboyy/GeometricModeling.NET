@@ -1,0 +1,23 @@
+﻿.container-row {
+    display: flex;
+    flex-direction: row;
+    height: 95vh;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-canvas {
+    height: 100%;
+    flex: 7;
+}
+
+.container-canvas ::deep canvas {
+    height: inherit;
+    width: 100%;
+}
+
+.container-grid {
+    height: 100%;
+    flex: 3;
+}

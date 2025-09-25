@@ -1,27 +1,26 @@
 ﻿@page "/raster"
 @rendermode InteractiveWebAssembly
 
-<h3>SKCanvasView Test</h3>
+<div class="container-row">
+    <div class="container-canvas border">
 
-<div class="container">
-    <div class="row">
-        <div class="col border rounded p-2 canvas-container">
+        <SKCanvasView @ref="skiaView"
+                        OnPaintSurface="OnPaintSurface"
+                        IgnorePixelScaling="true"
+                        @onpointerdown="OnPointerDown"
+                        @onpointermove="OnPointerMove"
+                        @onpointerup="OnPointerUp" />
 
-            <SKCanvasView @ref="skiaView"
-                          OnPaintSurface="OnPaintSurface"
-                          IgnorePixelScaling="true"
-                          @onpointerdown="OnPointerDown"
-                          @onpointermove="OnPointerMove"
-                          @onpointerup="OnPointerUp" />
+    </div>
+    <div class="container-grid border">
 
-        </div>
     </div>
 </div>
 
 @code {
     SKCanvasView skiaView = null!;
     SKPath? drawing;
-
+    
     void OnPaintSurface(SKPaintSurfaceEventArgs e)
     {
         // the the canvas and properties
