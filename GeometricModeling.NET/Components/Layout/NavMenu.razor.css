@@ -6,7 +6,7 @@
 }
 
 .navbar-brand {
-    color: #1E90FF;
+    color: #008000;
     font-size: 1.3rem;
     font-weight: bold;
 }
@@ -48,11 +48,11 @@
 }
 
 .nav-item ::deep a.active {
-    color: #1E90FF;
+    color: #008000;
 }
 
 .nav-item ::deep .nav-link:hover {
-    background-color: #1E90FF;
+    background-color: #008000;
     color: white;
 }
 

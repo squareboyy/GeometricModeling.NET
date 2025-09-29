@@ -49,3 +49,27 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+
+.container-row {
+    display: flex;
+    flex-direction: row;
+    height: 95vh;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-canvas {
+    height: 100%;
+    flex: 7;
+}
+
+.container-canvas canvas {
+    height: inherit;
+    width: 100%;
+}
+
+.container-grid {
+    height: 100%;
+    flex: 3;
+}

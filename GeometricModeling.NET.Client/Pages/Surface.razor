@@ -1,0 +1,19 @@
+﻿@page "/surface"
+@rendermode InteractiveWebAssembly
+
+<div class="container-row">
+    <div class="container-canvas border">
+
+        <SKGLView @ref="skglView"
+                      OnPaintSurface="OnPaintSurface"
+                      IgnorePixelScaling="true"
+                      @onwheel="OnWheel":preventDefault="true"/>
+
+    </div>
+    <div class="container-grid border">
+    </div>
+</div>
+
+@code {
+
+}
