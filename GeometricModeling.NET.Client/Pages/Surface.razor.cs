@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components;
 using System.IO;
 using GeometricModeling.NET.Client.Services.Interfaces;
+using GeometricModeling.NET.Client.Extensions;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace GeometricModeling.NET.Client.Pages
 {
@@ -16,11 +19,16 @@ namespace GeometricModeling.NET.Client.Pages
         private SKPoint3[]? axes3D;
         private int projection_angel = 25;
 
+        //List<SKPoint[]>? surfaceProjectionPoints;
+
         [Inject]
         public required IAxesService Axes { get; set; }
 
         [Inject]
         public required IProjectionService Projection { get; set; }
+
+        [Inject]
+        public required ISurfaceService SurfaceService { get; set; }
 
         //draw some text
         //using var font = new SKFont
@@ -37,9 +45,11 @@ namespace GeometricModeling.NET.Client.Pages
                 width = e.Info.Width;
                 height = e.Info.Height;
                 ІnitializationAxes();
-                Console.WriteLine($"W:{width} | H:{height}");
+                //Console.WriteLine($"W:{width} | H:{height}");
+                //List<SKPoint3[]> surfacePoints = SurfaceService.GetProjectiveEllipsoid(200, 200, 200, 60, 360.GetRadianF(), 360.GetRadianF(), 0, 0);
+                //surfaceProjectionPoints = surfacePoints.Select(p => Projection.GetDimetricProjection(p, projection_angel)).ToList();
             }
-         
+            
             if (!originPoint.IsEmpty)
             {
                 canvas.Translate(originPoint.X, height - originPoint.Y);
@@ -61,6 +71,33 @@ namespace GeometricModeling.NET.Client.Pages
                 using var axesPath = Axes.GetAxesPath(axes2D);
                 canvas.DrawPath(axesPath, paint);
             }
+
+            List<SKPoint3[]> surfacePoints = SurfaceService.GetProjectiveEllipsoid(200, 200, 200, 30, 360.GetRadianF(), 360.GetRadianF(), 0, 0);
+            var timer = Stopwatch.StartNew();
+            List<SKPoint[]> surfaceProjectionPoints = surfacePoints.Select(p => Projection.GetDimetricProjection(p, projection_angel)).ToList();
+            timer.Stop();
+            //var surfaceProjectionPoints = surfacePoints.Select(p => Projection.GetDimetricProjection(p, projection_angel));
+            //surfaceProjectionPoints = surfacePoints.Select(p => Projection.GetDimetricProjection(p, projection_angel)).ToList();
+
+            if (surfaceProjectionPoints is not null)
+            {
+                foreach (var projectionPoints in surfaceProjectionPoints)
+                {
+                    canvas.DrawPoints(SKPointMode.Polygon, projectionPoints, paint);
+                }
+            }
+           
+            Console.WriteLine($"time ms: {timer.ElapsedMilliseconds}");
+
+
+            /*for (int i = 0; i < surfacePoints.Count; i++)
+            {
+                using var projectionPath = Projection.GetDimetricProjection2(surfacePoints[i], projection_angel);
+                canvas.DrawPath(projectionPath, paint);
+            }
+            var timer = Stopwatch.StartNew();
+            timer.Stop();
+            Console.WriteLine($"time ms: {timer.ElapsedMilliseconds}");*/
         }
 
         private void ІnitializationAxes()
@@ -76,7 +113,23 @@ namespace GeometricModeling.NET.Client.Pages
             else if (e.DeltaY > 0 && projection_angel < 45)
                 projection_angel++;
 
-            skglView.Invalidate();
+           //skglView.Invalidate();
         }
+
+        /*private async void OnWheel(WheelEventArgs e)
+        {
+            if (e.DeltaY < 0 && projection_angel > -45)
+                while (projection_angel > -44)
+                {
+                    await (Task.Delay(10));
+                    projection_angel--;
+                }
+            else if (e.DeltaY > 0 && projection_angel < 45)
+                while (projection_angel < 44)
+                {
+                    await (Task.Delay(10));
+                    projection_angel++;
+                }
+        }*/
     }
 }

@@ -1,0 +1,34 @@
+﻿@using GeometricModeling.NET.Components.Layout
+@rendermode InteractiveServer
+
+
+<div class="sidebar">
+    @* @sidebarClass *@
+    <div class="top-row border-end">
+        <a class="navbar-brand @textClass" href="">Geometric Modeling </a>
+        <span class="openbtn" @onclick="HideMenu">&#9776;</span>
+    </div>
+
+    @if (!isSidebarOpen)
+    {
+        <NavMenu />
+    }
+    else
+    {
+        <p>KY!</p>
+    }
+</div>
+ 
+
+
+@code {
+    private bool isSidebarOpen = true;
+
+    private string? sidebarClass => isSidebarOpen ? null : "closed";
+    private string? textClass => isSidebarOpen ? null : "closed";
+  
+    private void HideMenu()
+    {
+        isSidebarOpen = !isSidebarOpen;
+    }
+}

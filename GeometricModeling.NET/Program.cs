@@ -21,6 +21,7 @@ namespace GeometricModeling.NET
             builder.Services.AddTransient<IProjectionService, ProjectionService>();
             builder.Services.AddTransient<IRotationTransformMatrixService, RotationTransformMatrixService>();
             builder.Services.AddTransient<IOrthographicProjectionMatrixService, OrthographicProjectionMatrixService>();
+            builder.Services.AddTransient<ISurfaceService, VectorParametricSurfaceForm>();
 
             var app = builder.Build();
 

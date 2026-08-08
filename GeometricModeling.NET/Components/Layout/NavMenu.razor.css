@@ -1,31 +1,8 @@
-﻿/*Назва сайту*/
-
-.top-row {
-    height: 3.5rem;
-    padding: 1rem;
-}
-
-.navbar-brand {
-    color: #008000;
-    font-size: 1.3rem;
-    font-weight: bold;
-}
-
-/**/
-
-/*Елементи(блоки) меню*/
-.nav-item {
+﻿.nav-item {
     font-size: 1rem;
     padding-bottom: 0.5rem;
     text-decoration: none;
 }
-
-.bi {
-    display: inline-block;
-    padding: 0.25rem;
-    background-size: cover;
-}
-
 
 .nav-item:first-of-type {
     padding-top: 1rem;
@@ -39,66 +16,36 @@
     color: black;
     background: none;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     height: 3rem;
+    width: 100%;
     display: flex;
     align-items: center;
     line-height: 3rem;
-    width: 100%;
 }
 
-.nav-item ::deep a.active {
-    color: #008000;
-}
-
-.nav-item ::deep .nav-link:hover {
-    background-color: #008000;
-    color: white;
-}
-
-
-.nav-scrollable {
-    /* Never collapse the sidebar for wide screens */
-    display: block;
-    /* Allow sidebar to scroll for tall menus */
-    height: calc(100vh - 3.5rem);
-    overflow-y: auto;
-}
-
-.navbar-toggler {
-    display: none;
-}
-
-/*!!!*/
-@media (max-width: 641px) {
-    .nav-scrollable {
-        display: none;
-        height: auto;
-        /*background-color: #1E90FF;*/
-    }
-
-    .navbar-toggler {
-        display: block;
-        appearance: none;
-        cursor: pointer;
-        width: 3.5rem;
-        height: 2.5rem;
+    .nav-item ::deep .nav-link:hover,
+    .nav-item ::deep .nav-link.active {
+        background-color: #008000;
         color: white;
-        position: absolute;
-        top: 0.5rem;
-        right: 1rem;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") no-repeat center/1.75rem rgba(255, 255, 255, 0.1);
-        background-color: #1E90FF;
     }
 
-    .navbar-toggler:checked {
-        background-color: #1E90FF;
+.nav-link i {
+    font-size: 1.2rem;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+    .nav-link:hover i,
+    .nav-link.active i {
+        color: white;
     }
 
-    .navbar-toggler:checked ~ .nav-scrollable {
-        display: block;
-    }
+.bi {
+    display: inline-block;
+    padding: 0.25rem;
+    padding-right: 0.5rem;
+    /*    background-size: cover;*/
 }
 
 /*.bi-house-door-fill-nav-menu {

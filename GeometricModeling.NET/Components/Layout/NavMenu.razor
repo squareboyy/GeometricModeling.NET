@@ -1,28 +1,26 @@
-﻿<div class="top-row ps-3 navbar border-end">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Geometric Modeling</a>
-    </div>
-</div>
-
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-
-<div class="nav-scrollable border-end" onclick="document.querySelector('.navbar-toggler').click()">
+﻿<div class="border-end border-bottom">
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi-house-door-fill bi" aria-hidden="true"></span> Home
+                <i class="bi bi-house-door-fill" aria-hidden="true"></i> Home
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="raster">
-                <span class="bi-circle-square bi" aria-hidden="true"></span> Skia
+                <i class="bi bi-circle-square" aria-hidden="true"></i> Skia
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="linearTransforms">
+                <i class="bi bi-square-fill" aria-hidden="true"></i> Linear Transforms
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="surface">
-                <span class="bi-layers-half bi" aria-hidden="true"></span> PA-1
+                <i class="bi bi-layers-half" aria-hidden="true"></i> PA-1
             </NavLink>
         </div>
     </nav>

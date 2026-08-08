@@ -29,6 +29,14 @@ namespace GeometricModeling.NET.Client.Extensions
             return resultPoint;
         }
 
+        public static SKPoint Multiply(this SKPoint3 p, float[,] matrix)
+        {
+            var x = p.X * matrix[0, 0] + p.Y * matrix[1, 0] + p.Z * matrix[2, 0];
+            var y = p.X * matrix[0, 1] + p.Y * matrix[1, 1] + p.Z * matrix[2, 1];
+
+            return new SKPoint(x, y);
+        }
+
         public static SKPoint GetProjectionPoint(this SKPoint3 point, ProjectionPlane zeroPlane)
         {
             SKPoint result = zeroPlane switch
