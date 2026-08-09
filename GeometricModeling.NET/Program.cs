@@ -1,7 +1,5 @@
 ﻿//using GeometricModeling.NET.Client.Pages;
-using GeometricModeling.NET.Client.Services.Interfaces;
 using GeometricModeling.NET.Components;
-using GeometricModeling.NET.Client.Services;
 
 namespace GeometricModeling.NET
 {
@@ -15,13 +13,6 @@ namespace GeometricModeling.NET
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents();
-
-            //зареєстровані в 2 збірках
-            builder.Services.AddTransient<IAxesService, AxesService>();
-            builder.Services.AddTransient<IProjectionService, ProjectionService>();
-            builder.Services.AddTransient<IRotationTransformMatrixService, RotationTransformMatrixService>();
-            builder.Services.AddTransient<IOrthographicProjectionMatrixService, OrthographicProjectionMatrixService>();
-            builder.Services.AddTransient<ISurfaceService, VectorParametricSurfaceForm>();
 
             var app = builder.Build();
 
