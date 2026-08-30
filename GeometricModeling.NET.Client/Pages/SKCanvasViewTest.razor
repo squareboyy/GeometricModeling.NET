@@ -1,8 +1,10 @@
 ﻿@page "/raster"
 @rendermode InteractiveWebAssembly
 
+<PageTitle>Skia Test</PageTitle>
+
 <div class="container-row">
-    <div class="container-canvas border">
+    <div class="container-canvas">
 
         <SKCanvasView @ref="skiaView"
                         OnPaintSurface="OnPaintSurface"
@@ -12,7 +14,7 @@
                         @onpointerup="OnPointerUp" />
 
     </div>
-    <div class="container-grid border">
+    <div class="container-grid">
 
     </div>
 </div>

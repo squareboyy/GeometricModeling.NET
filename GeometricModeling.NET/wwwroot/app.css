@@ -1,3 +1,11 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -52,26 +60,26 @@ h1:focus {
 
 .container-row {
     display: flex;
-    flex-direction: row;
-    height: 95vh;
-    width: 95%;
+    height: 100%;
+    width: 100%;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
+    column-gap: 0.5rem;
 }
 
 .container-canvas {
     height: 100%;
-    flex: 7;
+    flex: 3;
 }
 
 .container-canvas canvas {
-    height: inherit;
+    height: 100%;
     width: 100%;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.12);
 }
 
 .container-grid {
-    flex: 3;
+    flex: 1;
     height: 100%;
     display: grid;
     grid-template-columns: 120px 120px;
@@ -79,6 +87,7 @@ h1:focus {
     gap: 20px;
     justify-content: center;
     align-content: center;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.12);
 }
 
 .item1 {
@@ -98,12 +107,27 @@ label {
 
 .form {
     width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0,0, .1);
-    padding: 2px;
-    font-size: 10px;
-    font-weight: 600;
+    padding: 1rem;
     text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.12);
+}
+
+.form > fieldset {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 1rem;
+}
+
+fieldset > legend {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+fieldset > div {
 }
 
 input[type=text], [type=number] {

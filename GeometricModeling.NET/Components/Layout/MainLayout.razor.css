@@ -1,11 +1,14 @@
 .page {
     display: flex;
-    min-height: 100vh;
+    height: 100vh;
 }
-    .page > main {
-        flex: 1; 
-        min-width: 0;
-    }
+
+.page > main {
+    flex: 1;
+    height: inherit;
+    min-width: 0;
+    padding: 0.5rem;
+}
 
 #blazor-error-ui {
     background: lightyellow;
@@ -19,9 +22,9 @@
     z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
-    }
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}

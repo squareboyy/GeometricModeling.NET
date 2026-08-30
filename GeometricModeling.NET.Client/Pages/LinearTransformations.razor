@@ -1,8 +1,10 @@
 ﻿@page "/linearTransforms"
 @rendermode InteractiveWebAssembly
 
+<PageTitle>Linear Transforms</PageTitle>
+
 <div class="container-row">
-    <div class="container-canvas border" @oncontextmenu:preventDefault="true" @oncontextmenu="@(e => { })">
+    <div class="container-canvas" @oncontextmenu:preventDefault="true" @oncontextmenu="@(e => { })">
 
         <SKCanvasView @ref="skiaView"
                       OnPaintSurface="OnPaintSurface"
@@ -14,31 +16,27 @@
 
     </div>
     <div class="container-grid">
-        <div class="item1 form">
-            <form>
-                <fieldset>
-                    <legend>Сітка</legend>
-                    <div>
-                        <label>Показати сітку</label>
-                        <input type="checkbox" name="grid" @bind="@activeGrid"/>
-                    </div>
-                    <div>
-                        <input type="number" name="name" step="25" min="25" @bind="@gridStep" @bind:event="oninput" @bind:after="GetGrid" />
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <div class="item2 form">
-            <form>
-                <fieldset>
-                    <legend>Контур</legend>
-                    <div>
-                    <label>Колір контуру</label>
-                        <input type="color" name="contourColor" @oninput="OnColorChanged" />
-                    </div>
-                </fieldset>
-            </form>
-        </div>
+        <form class="item1 form">
+            <fieldset>
+                <legend>Сітка</legend>
+                <div>
+                    <label>Показати сітку</label>
+                    <input type="checkbox" name="grid" @bind="@activeGrid"/>
+                </div>
+                <div>
+                    <input type="number" name="name" step="25" min="25" @bind="@gridStep" @bind:event="oninput" @bind:after="GetGrid" />
+                </div>
+            </fieldset>
+        </form>
+        <form class="item2 form">
+            <fieldset>
+                <legend>Контур</legend>
+                <div>
+                <label>Колір контуру</label>
+                    <input type="color" name="contourColor" @oninput="OnColorChanged" />
+                </div>
+            </fieldset>
+        </form>
     </div>
 </div>
 
