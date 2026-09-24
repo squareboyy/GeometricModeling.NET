@@ -1,5 +1,7 @@
 ﻿//using GeometricModeling.NET.Client.Pages;
 using GeometricModeling.NET.Components;
+using GeometricModeling.NET.Client.Services;
+using GeometricModeling.NET.Client.Services.Interfaces;
 
 namespace GeometricModeling.NET
 {
@@ -13,6 +15,8 @@ namespace GeometricModeling.NET
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents();
+
+            builder.Services.AddScoped<ISurfaceStateService, SurfaceStateService>();
 
             var app = builder.Build();
 

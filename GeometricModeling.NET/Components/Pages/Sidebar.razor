@@ -1,9 +1,9 @@
 ﻿@rendermode InteractiveServer
 
-<div class="sidebar @closedClass"> @*rename aside?*@
-    <div class="top-row @closedClass">
-        <a class="navbar-brand @closedClass" href="">Geometric Modeling</a>
-        @if (isSidebarOpen)
+<div class="sidebar @_closedClass"> @*rename aside?*@
+    <div class="top-row @_closedClass">
+        <a class="navbar-brand @_closedClass" href="">Geometric Modeling</a>
+        @if (_isSidebarOpen)
         {
             <i class="bi bi-arrow-left-square closebtn" @onclick="ToggleNavMenu" aria-hidden="true"></i>
         }
@@ -14,21 +14,21 @@
     </div>
     <nav>
         <div class="nav-item">
-            <NavLink class="@($"nav-link {closedClass}")" href="" Match="NavLinkMatch.All">
+            <NavLink class="@($"nav-link {_closedClass}")" href="" Match="NavLinkMatch.All">
                 <i class="bi bi-house-door-fill" aria-hidden="true"></i>
                 <span class="nav-link-text">Home</span>
             </NavLink>
         </div>
 
         <div class="nav-item">
-            <NavLink class="@($"nav-link {closedClass}")" href="raster">
+            <NavLink class="@($"nav-link {_closedClass}")" href="raster">
                 <i class="bi bi-circle-square" aria-hidden="true"></i>
                 <span class="nav-link-text">Skia test</span>
             </NavLink>
         </div>
 
         <div class="nav-item">
-            <NavLink class="@($"nav-link {closedClass}")" href="linearTransforms">
+            <NavLink class="@($"nav-link {_closedClass}")" href="linearTransforms">
                 <i class="bi bi-square-fill" aria-hidden="true"></i>
                 <span class="nav-link-text">Linear Transforms</span>
             </NavLink>
@@ -37,11 +37,11 @@
 </div>
 
 @code {
-    private bool isSidebarOpen = true;
-    private string? closedClass => isSidebarOpen ? null : "closed";
+    private bool _isSidebarOpen = true;
+    private string? _closedClass => _isSidebarOpen ? null : "closed";
   
     private void ToggleNavMenu()
     {
-        isSidebarOpen = !isSidebarOpen;
+        _isSidebarOpen = !_isSidebarOpen;
     }
 }

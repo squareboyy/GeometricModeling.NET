@@ -1,0 +1,75 @@
+﻿@page "/linearTransforms"
+@rendermode InteractiveWebAssembly
+
+<PageTitle>Linear Transforms</PageTitle>
+
+<div class="container-row">
+    <div class="container-canvas" @oncontextmenu:preventDefault="true" @oncontextmenu="@(e => { })">
+        @if (_isConstructMode)
+        {
+            <DetailConstruction />
+        }
+        else if (_isEditMode)
+        {
+            <DetailEditing />
+        }
+        else
+        {
+            <SKCanvasView @ref="_skiaView"
+                          OnPaintSurface="OnPaintSurface"
+                          IgnorePixelScaling="true"
+                          EnableRenderLoop="true"
+                          @onpointerdown="OnPointerDown"
+                          @onpointermove="OnPointerMove"
+                          @onwheel="OnWheel" :preventDefault="true" />
+        }
+    </div>
+    <div class="container-grid">
+        <button class="panel" @onclick="ConstructButtonClicked">Побудова</button>
+        <button class="panel" @onclick="EditButtonClicked">Редагування</button>
+        <form class="item1 form">
+            <fieldset>
+                <legend>Сітка</legend>
+                <div>
+                    <label>Показати осі</label>
+                    <input type="checkbox" name="axes" @bind="@SurfaceStateService.IsActiveAxes" />
+                </div>
+                <div>
+                    <label>Показати сітку</label>
+                    <input type="checkbox" name="grid" @bind="@SurfaceStateService.IsActiveGrid"/>
+                </div>
+                <div>
+                    <input type="number" name="name" step="25" min="25" @bind="@SurfaceStateService.GridStep" @bind:event="oninput" @bind:after="GetGridPoints" />
+                </div>
+            </fieldset>
+        </form>
+        <form class="item2 form">
+            <fieldset>
+                <legend>Контур</legend>
+                <div>
+                <label>Колір контуру</label>
+                    <input type="color" name="contourColor" @oninput="OnColorChanged" />
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+@code {
+    private bool _isConstructMode = false;
+    private bool _isEditMode = false;
+    
+    private string? _isInactiveConstructInterfaceElement => _isConstructMode ? null : "inactive-element";
+    private string? _isInactiveEditInterfaceElement => _isEditMode ? null : "inactive-element";
+    private string? _isInactiveElement => _isConstructMode || _isEditMode ? null :"inactive-element";
+
+    private void ConstructButtonClicked()
+    {
+        _isConstructMode = !_isConstructMode;
+    }
+
+    private void EditButtonClicked()
+    {
+        _isEditMode = !_isEditMode;
+    }
+}

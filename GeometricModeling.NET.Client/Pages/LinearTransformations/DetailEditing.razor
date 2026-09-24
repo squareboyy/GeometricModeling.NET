@@ -1,0 +1,9 @@
+﻿@inherits DetailTransformation
+@* @rendermode InteractiveWebAssembly *@
+
+<SKCanvasView @ref="_skiaView"
+              OnPaintSurface="OnPaintSurface"
+              IgnorePixelScaling="true"
+              EnableRenderLoop="true" 
+              @onpointerdown="OnPointerDown"
+              @onpointermove="OnPointerMove" />

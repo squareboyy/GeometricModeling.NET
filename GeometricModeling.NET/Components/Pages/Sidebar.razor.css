@@ -78,7 +78,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 0.5rem;
+    padding: 0 0.25rem 0.5rem 0.25rem;
 
     &:first-of-type {
         padding-top: 1rem;
@@ -91,7 +91,7 @@
 
 .nav-item ::deep .nav-link {
     height: 3rem;
-    width: 95%;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 5fr;
     align-items: center;

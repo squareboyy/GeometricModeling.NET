@@ -70,34 +70,38 @@ h1:focus {
 .container-canvas {
     height: 100%;
     flex: 3;
+/*    padding: 0.5rem;*/
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.12);
 }
 
 .container-canvas canvas {
     height: 100%;
     width: 100%;
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.12);
 }
 
 .container-grid {
+/*    border: solid 1px red;*/
     flex: 1;
     height: 100%;
     display: grid;
     grid-template-columns: 120px 120px;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    gap: 20px;
+    gap: 10px;
+    /*    padding: 0.5rem;*/
     justify-content: center;
-    align-content: center;
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.12);
+    align-content: start;
+    /*    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.12);*/
 }
 
 .item1 {
-    grid-column: span 2; /*1/2*/
+    grid-column: span 1;
     grid-row: 1;
 }
 
 .item2 {
-    grid-column: span 2;
-    grid-row: 2;
+    grid-column: span 1;
+    grid-row: 1;
 }
 
 label {
@@ -137,6 +141,20 @@ input[type=text], [type=number] {
     border-radius: 8px;
     border: 2px solid black;
     margin: 8px 0;
+}
+
+.panel {
+    padding: 20px;
+    background: white;
+    transition: opacity 0.3s ease, filter 0.3s ease; /* Плавний перехід у заблокований стан */
+}
+
+/* Цей клас динамічно додається через JS або фреймворк */
+.panel.inactive-element {
+    opacity: 0.6;
+    pointer-events: none; /* Жоден клік чи ховер не пройде */
+    filter: grayscale(100%); /* Робить контент чорно-білим для чіткості */
+    user-select: none; /* Забороняє виділяти текст */
 }
 
 /*input[type=submit], input[type=reset], input[type=button], button {

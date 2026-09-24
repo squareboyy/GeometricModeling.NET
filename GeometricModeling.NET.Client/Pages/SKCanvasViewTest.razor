@@ -6,7 +6,7 @@
 <div class="container-row">
     <div class="container-canvas">
 
-        <SKCanvasView @ref="skiaView"
+        <SKCanvasView @ref="_skiaView"
                         OnPaintSurface="OnPaintSurface"
                         IgnorePixelScaling="true"
                         @onpointerdown="OnPointerDown"
@@ -20,8 +20,8 @@
 </div>
 
 @code {
-    SKCanvasView skiaView = null!;
-    SKPath? drawing;
+    SKCanvasView _skiaView = null!;
+    SKPath? _drawing;
     
     void OnPaintSurface(SKPaintSurfaceEventArgs e)
     {
@@ -48,12 +48,12 @@
         canvas.DrawText("SkiaSharp", coord, SKTextAlign.Center, font, paint);
 
         // draw the path
-        if (drawing != null)
+        if (_drawing != null)
         {
             paint.Style = SKPaintStyle.Stroke;
             paint.StrokeWidth = 5;
            
-            canvas.DrawPath(drawing, paint);
+            canvas.DrawPath(_drawing, paint);
         }
         // Console.WriteLine($"Painted at {DateTime.Now}");
     }
@@ -62,27 +62,27 @@
     {
         var touchLocation = new SKPoint((float)e.OffsetX, (float)e.OffsetY);
 
-        drawing = new SKPath();
-        drawing.MoveTo(touchLocation);
+        _drawing = new SKPath();
+        _drawing.MoveTo(touchLocation);
 
-        skiaView.Invalidate();
+        _skiaView.Invalidate();
     }
 
     void OnPointerMove(PointerEventArgs e)
     {
-        if (drawing is null)
+        if (_drawing is null)
             return;
 
         var touchLocation = new SKPoint((float)e.OffsetX, (float)e.OffsetY);
-        drawing.LineTo(touchLocation);
+        _drawing.LineTo(touchLocation);
 
-        skiaView.Invalidate();
+        _skiaView.Invalidate();
     }
 
     void OnPointerUp(PointerEventArgs e)
     {
-        drawing = null;
+        _drawing = null;
 
-        skiaView.Invalidate();
+        _skiaView.Invalidate();
     }
 }
