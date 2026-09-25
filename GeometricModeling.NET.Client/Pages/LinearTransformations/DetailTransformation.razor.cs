@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using GeometricModeling.NET.Client.Services;
+using GeometricModeling.NET.Client.Services.Interfaces;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using SkiaSharp;
 using SkiaSharp.Views.Blazor;
-using GeometricModeling.NET.Client.Services.Interfaces;
 using System.Data;
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Dynamic;
+using System.Text.RegularExpressions;
 using static System.MathF;
 
 namespace GeometricModeling.NET.Client.Pages.LinearTransformations
@@ -87,9 +89,8 @@ namespace GeometricModeling.NET.Client.Pages.LinearTransformations
                 SurfaceStateService.GetGridPoints();
             }
 
+            canvas.Translate(SurfaceStateService.OriginPoint);
             canvas.Clear(SKColors.White);
-            canvas.Save();
-            canvas.Translate(SurfaceStateService.AxisStartPoint);
 
             if (SurfaceStateService.IsActiveGrid)
             {
@@ -100,8 +101,6 @@ namespace GeometricModeling.NET.Client.Pages.LinearTransformations
             {
                 canvas.DrawPoints(SKPointMode.Lines, SurfaceStateService.AxedPoints.ToArray(), _axesPaint);
             }
-
-            canvas.Restore();
 
             if (_contourPath is not null)
             {
@@ -120,7 +119,7 @@ namespace GeometricModeling.NET.Client.Pages.LinearTransformations
         private void OnPointerDown(PointerEventArgs e)
         {
             var touchLocation = new SKPoint((float)e.OffsetX, (float)e.OffsetY);
-            Console.WriteLine($"PointerDown at: {touchLocation.X}, {touchLocation.Y}");
+            touchLocation -= SurfaceStateService.OriginPoint;
 
             if (_contourPath is null || e.CtrlKey)
             {
@@ -185,6 +184,7 @@ namespace GeometricModeling.NET.Client.Pages.LinearTransformations
                 return;
 
             var touchLocation = new SKPoint((float)e.OffsetX, (float)e.OffsetY);
+            touchLocation -= SurfaceStateService.OriginPoint;
 
             if (_isClosedContour && e.Buttons == 1 && _lastMousePos is not null)
             {
@@ -204,7 +204,7 @@ namespace GeometricModeling.NET.Client.Pages.LinearTransformations
                     _isShiftWasPressed = true;
                     float xGrid = Round(touchLocation.X / SurfaceStateService.GridStep) * SurfaceStateService.GridStep;
                     float yGrid = Round(touchLocation.Y / SurfaceStateService.GridStep) * SurfaceStateService.GridStep;
-                    _possiblePoint = new SKPoint(xGrid, yGrid) + SurfaceStateService.AxisStartPoint;
+                    _possiblePoint = new SKPoint(xGrid, yGrid);
 
                     return;
                 }
@@ -226,6 +226,7 @@ namespace GeometricModeling.NET.Client.Pages.LinearTransformations
                 return;
 
             var touchLocation = new SKPoint((float)e.OffsetX, (float)e.OffsetY);
+            touchLocation -= SurfaceStateService.OriginPoint;
             int rotateAngle = 0;
 
             if (e.DeltaY < 0)
